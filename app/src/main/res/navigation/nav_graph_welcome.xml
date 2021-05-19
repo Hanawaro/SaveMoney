@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_welcome"
+    app:startDestination="@id/signInFragment">
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.speechpeach.savemoney.ui.welcome.fragments.signIn.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signInFragment_to_pickReferralCodeFragment"
+            app:destination="@id/pickReferralCodeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pickReferralCodeFragment"
+        android:name="com.speechpeach.savemoney.ui.welcome.fragments.pickReferralCode.PickReferralCodeFragment"
+        android:label="fragment_pick_referral_code"
+        tools:layout="@layout/fragment_pick_referral_code" />
+</navigation>

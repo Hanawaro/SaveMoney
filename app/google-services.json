@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "337403795124",
+    "project_id": "savemoney-17489",
+    "storage_bucket": "savemoney-17489.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:337403795124:android:0736969730c0c197e2e9e1",
+        "android_client_info": {
+          "package_name": "com.speechpeach.savemoney"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "337403795124-v403gmivi3u587ga90jahd3qof7eab3u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.speechpeach.savemoney",
+            "certificate_hash": "81c3a5442e40105cf3bd8b453b84a09149879fde"
+          }
+        },
+        {
+          "client_id": "337403795124-cqv080s9o8sb8jv1nf2h01g1nb0l5ar5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNrqCcm1Fwfk0Psukewe3S7QxJPYrnViY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "337403795124-cqv080s9o8sb8jv1nf2h01g1nb0l5ar5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

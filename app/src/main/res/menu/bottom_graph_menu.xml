@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/managerFragment"
+        android:title="manager" />
+
+    <item
+        android:id="@+id/statsFragment"
+        android:title="stats" />
+
+    <item
+        android:id="@+id/infoFragment"
+        android:title="info" />
+
+</menu>
