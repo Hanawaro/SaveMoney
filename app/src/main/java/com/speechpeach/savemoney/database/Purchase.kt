@@ -7,9 +7,9 @@ import javax.security.auth.callback.Callback
 
 data class Purchase(
     val uid: String,
-    val name: String,
-    val category: String,
-    val price: Int
+    var name: String,
+    var category: String,
+    var price: Int
 ) {
     enum class Category(val categoryName: String) {
         FOOD("food"), OTHER("other")
@@ -36,6 +36,16 @@ data class Purchase(
         fun add(purchase: Purchase) {
             val firestore = FirebaseFirestore.getInstance()
             firestore.collection(collection).add(purchase)
+        }
+
+        fun onChange(uid: String, callback: (QuerySnapshot) -> Unit) {
+            val firestore = FirebaseFirestore.getInstance()
+            firestore.collection(collection)
+                .whereEqualTo("uid", uid)
+                .addSnapshotListener { value, _ ->
+                    if (value != null)
+                        callback(value)
+                }
         }
     }
 }

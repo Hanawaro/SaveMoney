@@ -46,6 +46,11 @@ class ContentActivity : AppCompatActivity() {
 
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
     override fun onBackPressed() {
         if (!isNavBottomMenu)
             super.onBackPressed()

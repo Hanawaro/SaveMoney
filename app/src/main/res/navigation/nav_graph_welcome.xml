@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_welcome"
-    app:startDestination="@id/signInFragment">
+    app:startDestination="@id/splashScreen">
 
     <fragment
         android:id="@+id/signInFragment"
@@ -19,4 +19,12 @@
         android:name="com.speechpeach.savemoney.ui.welcome.fragments.pickReferralCode.PickReferralCodeFragment"
         android:label="fragment_pick_referral_code"
         tools:layout="@layout/fragment_pick_referral_code" />
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="com.speechpeach.savemoney.ui.welcome.fragments.splashScreen.SplashScreenFragment"
+        android:label="SplashScreen" >
+        <action
+            android:id="@+id/action_splashScreen_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
 </navigation>

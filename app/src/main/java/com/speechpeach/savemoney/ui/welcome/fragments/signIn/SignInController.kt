@@ -28,26 +28,11 @@ class SignInController(
     val firestore
         get() = firebaseFirestore
 
-    var successCallback: ((forTheFirstTime: Boolean, referralCode: String) -> Unit) = { _, _ -> }
+    var successCallback: ((forTheFirstTime: Boolean, referralCode: String, blocked: ArrayList<String>) -> Unit) = { _, _, _-> }
     var failedCallback: (() -> Unit) = {}
 
     fun init() {
         firebaseFirestore = FirebaseFirestore.getInstance()
-
-        if (FirebaseModule.firebaseAuth.currentUser != null) {
-            firebaseFirestore.collection(User.collection)
-                .whereEqualTo("email", FirebaseModule.firebaseAuth.currentUser!!.email)
-                .get()
-                .addOnSuccessListener {
-                    successCallback(false,
-                        if (!it.isEmpty)
-                            it.toObjects(User::class.java).first().referralCode
-                        else
-                            ""
-                    )
-                }
-        }
-
 
         val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(token)
@@ -81,12 +66,17 @@ class SignInController(
                 firebaseFirestore.collection(User.collection)
                     .whereEqualTo("email", FirebaseModule.firebaseAuth.currentUser!!.email)
                     .get().addOnSuccessListener {
-                        successCallback(it.isEmpty,
-                            if (!it.isEmpty)
-                                it.toObjects(User::class.java).first().referralCode
-                            else
-                                ""
-                        )
+                        if (!it.isEmpty) {
+                            successCallback(it.isEmpty,
+                                it.toObjects(User::class.java).first().referralCode,
+                                it.toObjects(User::class.java).first().blocked
+                            )
+                        } else {
+                            successCallback(it.isEmpty,
+                                "",
+                                ArrayList()
+                            )
+                        }
                     }
             } else {
                 failedCallback()

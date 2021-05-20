@@ -19,5 +19,22 @@
         android:id="@+id/infoFragment"
         android:name="com.speechpeach.savemoney.ui.content.fragments.info.InfoFragment"
         android:label="fragment_info"
-        tools:layout="@layout/fragment_info" />
+        tools:layout="@layout/fragment_info" >
+        <action
+            android:id="@+id/action_infoFragment_to_familyFragment"
+            app:destination="@id/familyFragment" />
+        <action
+            android:id="@+id/action_infoFragment_to_blackListFragment"
+            app:destination="@id/blackListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/blackListFragment"
+        android:name="com.speechpeach.savemoney.ui.content.fragments.info.blackList.BlackListFragment"
+        android:label="fragment_black_list"
+        tools:layout="@layout/fragment_black_list" />
+    <fragment
+        android:id="@+id/familyFragment"
+        android:name="com.speechpeach.savemoney.ui.content.fragments.info.family.FamilyFragment"
+        android:label="fragment_family"
+        tools:layout="@layout/fragment_family" />
 </navigation>

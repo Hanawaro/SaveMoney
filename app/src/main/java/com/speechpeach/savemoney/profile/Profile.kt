@@ -40,31 +40,41 @@ object Profile {
         googleSignInClient.signOut()
     }
 
-    fun setReferral(successCallback: () -> Unit, failedCallback: () -> Unit) {
+    fun setReferral(referral: String, successCallback: () -> Unit, failedCallback: () -> Unit) {
         val firestore = FirebaseFirestore.getInstance()
         firestore.collection(User.collection)
-            .whereEqualTo("uid", referralCode)
-            .get()
-            .addOnSuccessListener { point ->
-                if (!point.isEmpty && referralCode != uid) {
+                .whereEqualTo("uid", referral)
+                .get()
+                .addOnSuccessListener { point ->
+                    if (!point.isEmpty && referral != uid) {
 
-                    firestore.collection(User.collection)
-                        .whereEqualTo("uid", uid)
-                        .get()
-                        .addOnSuccessListener { current ->
+                        firestore.collection(User.collection)
+                                .whereEqualTo("uid", uid)
+                                .get()
+                                .addOnSuccessListener { current ->
 
-                            if (!current.isEmpty) {
-                                current.documents[0].reference.set(user)
-                                successCallback()
-                            } else {
-                                failedCallback()
-                            }
-                        }
+                                    if (!current.isEmpty) {
+                                        User.getAll(uid) {
+                                            if (it.isEmpty) {
+                                                user.referralCode = referral
+                                                current.documents[0].reference.set(user)
+                                                successCallback()
+                                            } else {
+                                                failedCallback()
+                                            }
+                                        }
+                                    } else {
+                                        failedCallback()
+                                    }
+                                }
 
-                } else {
-                    failedCallback()
+                    } else {
+                        failedCallback()
+                    }
                 }
-            }
     }
 
+    fun setReferral(successCallback: () -> Unit, failedCallback: () -> Unit) {
+        setReferral(referralCode, successCallback, failedCallback)
+    }
 }
