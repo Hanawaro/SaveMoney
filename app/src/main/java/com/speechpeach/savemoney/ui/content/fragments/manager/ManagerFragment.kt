@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.fragment_manager.*
 
 class ManagerFragment : Fragment(R.layout.fragment_manager) {
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
