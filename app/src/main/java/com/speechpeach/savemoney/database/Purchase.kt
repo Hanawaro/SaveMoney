@@ -6,13 +6,16 @@ import com.google.firebase.firestore.QuerySnapshot
 import javax.security.auth.callback.Callback
 
 data class Purchase(
-    val uid: String,
-    var name: String,
-    var category: String,
-    var price: Int
+    val uid: String = "",
+    var name: String = "",
+    var category: String = "",
+    var price: Int = -1
 ) {
     enum class Category(val categoryName: String) {
-        FOOD("food"), OTHER("other")
+        FOOD("food"),
+        ENTERTAINMENT("entertainment"),
+        HOUSE("house"),
+        OTHER("other")
     }
 
     companion object {
@@ -36,6 +39,10 @@ data class Purchase(
         fun add(purchase: Purchase) {
             val firestore = FirebaseFirestore.getInstance()
             firestore.collection(collection).add(purchase)
+        }
+
+        fun delete(ref: DocumentReference) {
+            ref.delete()
         }
 
         fun onChange(uid: String, callback: (QuerySnapshot) -> Unit) {
