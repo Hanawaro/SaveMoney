@@ -52,6 +52,7 @@ object Profile {
                         .whereEqualTo("uid", uid)
                         .get()
                         .addOnSuccessListener { current ->
+
                             if (!current.isEmpty) {
                                 current.documents[0].reference.set(user)
                                 successCallback()
