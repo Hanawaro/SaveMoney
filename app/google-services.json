@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "337403795124-3pui0nbqdag8e2brtcnfe3tbhh6b21s9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.speechpeach.savemoney",
+            "certificate_hash": "2a43c884e4154fa8879887b2c3940742a06f17bf"
+          }
+        },
+        {
           "client_id": "337403795124-v403gmivi3u587ga90jahd3qof7eab3u.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
