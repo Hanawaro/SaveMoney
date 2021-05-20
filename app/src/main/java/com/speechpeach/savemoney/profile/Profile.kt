@@ -45,10 +45,21 @@ object Profile {
         firestore.collection(User.collection)
             .whereEqualTo("uid", referralCode)
             .get()
-            .addOnSuccessListener {
-                if (!it.isEmpty && referralCode != uid) {
-                    it.documents[0].reference.set(user)
-                    successCallback()
+            .addOnSuccessListener { point ->
+                if (!point.isEmpty && referralCode != uid) {
+
+                    firestore.collection(User.collection)
+                        .whereEqualTo("uid", uid)
+                        .get()
+                        .addOnSuccessListener { current ->
+                            if (!current.isEmpty) {
+                                current.documents[0].reference.set(user)
+                                successCallback()
+                            } else {
+                                failedCallback()
+                            }
+                        }
+
                 } else {
                     failedCallback()
                 }
