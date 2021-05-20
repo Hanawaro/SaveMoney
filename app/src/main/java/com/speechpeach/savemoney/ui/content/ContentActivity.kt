@@ -49,8 +49,7 @@ class ContentActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (!isNavBottomMenu)
             super.onBackPressed()
-        else {
+        else
             finish()
-        }
     }
 }
