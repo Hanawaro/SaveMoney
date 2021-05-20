@@ -28,12 +28,26 @@ class SignInController(
     val firestore
         get() = firebaseFirestore
 
-    var successCallback: ((forTheFirstTime: Boolean) -> Unit) = {  }
+    var successCallback: ((forTheFirstTime: Boolean, referralCode: String) -> Unit) = { _, _ -> }
     var failedCallback: (() -> Unit) = {}
 
     fun init() {
-        if (FirebaseModule.firebaseAuth.currentUser != null)
-            successCallback(false)
+        firebaseFirestore = FirebaseFirestore.getInstance()
+
+        if (FirebaseModule.firebaseAuth.currentUser != null) {
+            firebaseFirestore.collection(User.collection)
+                .whereEqualTo("email", FirebaseModule.firebaseAuth.currentUser!!.email)
+                .get()
+                .addOnSuccessListener {
+                    successCallback(false,
+                        if (!it.isEmpty)
+                            it.toObjects(User::class.java).first().referralCode
+                        else
+                            ""
+                    )
+                }
+        }
+
 
         val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(token)
@@ -51,8 +65,6 @@ class SignInController(
                 } catch (e: ApiException) {  }
             }
         }
-
-        firebaseFirestore = FirebaseFirestore.getInstance()
     }
 
     fun launch() {
@@ -69,7 +81,12 @@ class SignInController(
                 firebaseFirestore.collection(User.collection)
                     .whereEqualTo("email", FirebaseModule.firebaseAuth.currentUser!!.email)
                     .get().addOnSuccessListener {
-                        successCallback(it.isEmpty)
+                        successCallback(it.isEmpty,
+                            if (!it.isEmpty)
+                                it.toObjects(User::class.java).first().referralCode
+                            else
+                                ""
+                        )
                     }
             } else {
                 failedCallback()

@@ -21,11 +21,12 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
         super.onCreate(savedInstanceState)
 
         controller = SignInController(requireContext(), requireActivity(), getString(R.string.default_web_client_id)).apply {
-            successCallback = { forTheFirstTime ->
+            successCallback = { forTheFirstTime, referralCode ->
                 Profile.init(User(
                     FirebaseModule.firebaseAuth.currentUser!!.uid,
                     FirebaseModule.firebaseAuth.currentUser!!.email!!,
-                    FirebaseModule.firebaseAuth.currentUser!!.displayName!!
+                    FirebaseModule.firebaseAuth.currentUser!!.displayName!!,
+                    referralCode
                 ))
                 if (forTheFirstTime) {
                     firestore.collection(User.collection).add(Profile.user)
