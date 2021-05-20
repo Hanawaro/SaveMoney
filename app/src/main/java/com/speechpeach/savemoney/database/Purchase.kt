@@ -22,6 +22,19 @@ data class Purchase(
 
         private const val collection = "purchase"
 
+        fun get(purchase: Purchase, callback: (QuerySnapshot) -> Unit) {
+            val firestore = FirebaseFirestore.getInstance()
+            firestore.collection(collection)
+                    .whereEqualTo("uid", purchase.uid)
+                    .whereEqualTo("name", purchase.name)
+                    .whereEqualTo("category", purchase.category)
+                    .whereEqualTo("price", purchase.price)
+                    .get()
+                    .addOnSuccessListener {
+                        callback(it)
+                    }
+        }
+
         fun getAll(uid: String, callback: (QuerySnapshot) -> Unit) {
             val firestore = FirebaseFirestore.getInstance()
             firestore.collection(collection)
