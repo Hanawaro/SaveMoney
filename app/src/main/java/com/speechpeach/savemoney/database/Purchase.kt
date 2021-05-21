@@ -6,10 +6,10 @@ import com.google.firebase.firestore.QuerySnapshot
 import javax.security.auth.callback.Callback
 
 data class Purchase(
-    val uid: String = "",
-    var name: String = "",
-    var category: String = "",
-    var price: Int = -1
+        val uid: String = "",
+        var name: String = "",
+        var category: String = "",
+        var price: Int = -1
 ) {
     enum class Category(val categoryName: String) {
         FOOD("food"),
@@ -38,11 +38,11 @@ data class Purchase(
         fun getAll(uid: String, callback: (QuerySnapshot) -> Unit) {
             val firestore = FirebaseFirestore.getInstance()
             firestore.collection(collection)
-                .whereEqualTo("uid", uid)
-                .get()
-                .addOnSuccessListener {
-                    callback(it)
-                }
+                    .whereEqualTo("uid", uid)
+                    .get()
+                    .addOnSuccessListener {
+                        callback(it)
+                    }
         }
 
         fun update(purchase: Purchase, ref: DocumentReference) {
@@ -61,11 +61,11 @@ data class Purchase(
         fun onChange(uid: String, callback: (QuerySnapshot) -> Unit) {
             val firestore = FirebaseFirestore.getInstance()
             firestore.collection(collection)
-                .whereEqualTo("uid", uid)
-                .addSnapshotListener { value, _ ->
-                    if (value != null)
-                        callback(value)
-                }
+                    .whereEqualTo("uid", uid)
+                    .addSnapshotListener { value, _ ->
+                        if (value != null)
+                            callback(value)
+                    }
         }
     }
 }

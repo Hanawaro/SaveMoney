@@ -6,6 +6,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.content.fragments.stats.StatsFragment">
 
+    <com.faskn.lib.ClickablePieChart
+        android:id="@+id/chart_manager"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:centerColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/button_stats"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:showPopup="false" />
+
     <Button
         android:id="@+id/button_stats"
         android:layout_width="wrap_content"

@@ -29,6 +29,17 @@
         app:layout_constraintTop_toBottomOf="@+id/text_view_info_name" />
 
     <Button
+        android:id="@+id/button_edit_get_referral_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="COPY REFERRAL CODE"
+
+        app:layout_constraintBottom_toTopOf="@+id/button_edit_referral_code"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_info_email" />
+
+    <Button
         android:id="@+id/button_edit_referral_code"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
