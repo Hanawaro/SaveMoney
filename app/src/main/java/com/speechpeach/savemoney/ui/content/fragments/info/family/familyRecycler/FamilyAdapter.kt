@@ -45,10 +45,18 @@ class FamilyAdapter(private val viewModel: FamilyViewModel) : ListAdapter<User, 
                     viewModel.family.value?.remove(user)
                     viewModel.family.postValue(viewModel.family.value)
 
-                    User.get(Profile.uid) {
-                        if (!it.isEmpty) {
+                    User.get(Profile.uid) { profile ->
+                        if (!profile.isEmpty) {
+
+                            User.get(user.uid) {
+                                if (!it.isEmpty) {
+                                    user.referralCode = ""
+                                    User.update(user, it.documents[0].reference)
+                                }
+                            }
+
                             Profile.user.blocked.add(user.uid)
-                            User.update(Profile.user, it.documents[0].reference)
+                            User.update(Profile.user, profile.documents[0].reference)
                         }
                     }
                 }

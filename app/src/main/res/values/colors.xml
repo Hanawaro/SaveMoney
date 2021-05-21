@@ -8,7 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="red">#FFFF0000</color>
-    <color name="green">#FF00FF00</color>
-    <color name="blue">#FF0000FF</color>
+    <color name="free">#dedede</color>
+    <color name="other">#737373</color>
+    <color name="food">#1aff8c</color>
+    <color name="entertainment">#1a75ff</color>
+    <color name="house">#fc7ef4</color>
 </resources>

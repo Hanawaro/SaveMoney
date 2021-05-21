@@ -19,24 +19,9 @@ class StatsFragment : Fragment(R.layout.fragment_stats) {
         chart_manager.setPieChart(buildChart {
             slices { arrayListOf(
                 Slice(
-                    Random.nextInt(1000, 3000).toFloat(),
-                    R.color.red,
-                    "Google"
-                ),
-                Slice(
-                    Random.nextInt(1000, 2000).toFloat(),
-                    R.color.green,
-                    "Facebook"
-                ),
-                Slice(
-                    Random.nextInt(1000, 5000).toFloat(),
-                    R.color.black,
-                    "Twitter"
-                ),
-                Slice(
-                    Random.nextInt(1000, 10000).toFloat(),
+                    1f,
                     R.color.semiGray,
-                    "Other"
+                    "Free"
                 )
             ) }
             sliceWidth { 80f }
