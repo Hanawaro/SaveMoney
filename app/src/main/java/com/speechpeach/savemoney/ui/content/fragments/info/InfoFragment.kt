@@ -1,8 +1,13 @@
 package com.speechpeach.savemoney.ui.content.fragments.info
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.speechpeach.savemoney.R
@@ -24,6 +29,14 @@ class InfoFragment : Fragment(R.layout.fragment_info) {
             val dialog = ReferralCodeDialog()
             dialog.referralCode = Profile.referralCode
             dialog.show(requireActivity().supportFragmentManager, "Referral code")
+        }
+
+        button_edit_get_referral_code.setOnClickListener {
+            val textToCopy = Profile.uid
+            val clipboardManager = requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clipData = ClipData.newPlainText("text", textToCopy)
+            clipboardManager.setPrimaryClip(clipData)
+            Toast.makeText(requireContext(), "Referral code copied", Toast.LENGTH_LONG).show()
         }
 
         button_show_family.setOnClickListener {

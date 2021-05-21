@@ -21,13 +21,13 @@ class SplashScreenController {
                     .addOnSuccessListener {
                         if (!it.isEmpty) {
                             successCallback(false,
-                                    it.toObjects(User::class.java).first().referralCode,
-                                    it.toObjects(User::class.java).first().blocked
+                                it.toObjects(User::class.java).first().referralCode,
+                                it.toObjects(User::class.java).first().blocked
                             )
                         } else {
                             successCallback(false,
-                                    "",
-                                    ArrayList()
+                                "",
+                                ArrayList()
                             )
                         }
 

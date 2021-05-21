@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment
 import com.faskn.lib.Slice
 import com.faskn.lib.buildChart
 import com.speechpeach.savemoney.R
+import com.speechpeach.savemoney.database.Purchase
+import com.speechpeach.savemoney.database.User
+import com.speechpeach.savemoney.profile.Profile
 import com.speechpeach.savemoney.ui.welcome.WelcomeActivity
 import kotlinx.android.synthetic.main.fragment_stats.*
 import kotlin.random.Random
@@ -19,18 +22,20 @@ class StatsFragment : Fragment(R.layout.fragment_stats) {
         chart_manager.setPieChart(buildChart {
             slices { arrayListOf(
                 Slice(
-                    1f,
-                    R.color.semiGray,
+                    1000f,
+                    R.color.free,
                     "Free"
                 )
             ) }
             sliceWidth { 80f }
         })
 
-        button_stats.setOnClickListener {
-            val intent = Intent(requireActivity(), WelcomeActivity::class.java)
-            startActivity(intent)
-            requireActivity().finish()
+        Purchase.getAll(Profile.uid) {
+            
+        }
+
+        button_money.setOnClickListener {
+
         }
     }
 
