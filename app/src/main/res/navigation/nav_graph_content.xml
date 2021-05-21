@@ -6,20 +6,15 @@
     app:startDestination="@id/statsFragment">
 
     <fragment
-        android:id="@+id/managerFragment"
-        android:name="com.speechpeach.savemoney.ui.content.fragments.manager.ManagerFragment"
-        android:label="fragment_manager"
-        tools:layout="@layout/fragment_manager" />
-    <fragment
         android:id="@+id/statsFragment"
         android:name="com.speechpeach.savemoney.ui.content.fragments.stats.StatsFragment"
-        android:label="fragment_stats"
+        android:label="Показатели"
         tools:layout="@layout/fragment_stats" />
     <fragment
         android:id="@+id/infoFragment"
         android:name="com.speechpeach.savemoney.ui.content.fragments.info.InfoFragment"
-        android:label="fragment_info"
-        tools:layout="@layout/fragment_info" >
+        android:label="Профиль"
+        tools:layout="@layout/fragment_info">
         <action
             android:id="@+id/action_infoFragment_to_familyFragment"
             app:destination="@id/familyFragment" />
@@ -30,11 +25,44 @@
     <fragment
         android:id="@+id/blackListFragment"
         android:name="com.speechpeach.savemoney.ui.content.fragments.info.blackList.BlackListFragment"
-        android:label="fragment_black_list"
+        android:label="Черный список"
         tools:layout="@layout/fragment_black_list" />
     <fragment
         android:id="@+id/familyFragment"
         android:name="com.speechpeach.savemoney.ui.content.fragments.info.family.FamilyFragment"
-        android:label="fragment_family"
+        android:label="Группа"
         tools:layout="@layout/fragment_family" />
+    <fragment
+        android:id="@+id/purchaseFragment"
+        android:name="com.speechpeach.savemoney.ui.content.fragments.purchases.PurchaseFragment"
+        android:label="Покупки">
+        <action
+            android:id="@+id/action_purchaseFragment_to_addOrEditFragment"
+            app:destination="@id/addOrEditFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/addOrEditFragment"
+        android:name="com.speechpeach.savemoney.ui.content.fragments.purchases.AddOrEditFragment"
+        android:label="Добавить/изменить"
+        tools:layout="@layout/fragment_add_or_edit">
+
+        <argument
+            android:name="uid"
+            android:defaultValue="other"
+            app:argType="string" />
+        <argument
+            android:name="isEdit"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_addOrEditFragment_to_purchaseFragment"
+            app:destination="@id/purchaseFragment" />
+        <argument
+            android:name="purchase"
+            android:defaultValue="@null"
+            app:argType="com.speechpeach.savemoney.database.Purchase"
+            app:nullable="true" />
+
+    </fragment>
 </navigation>

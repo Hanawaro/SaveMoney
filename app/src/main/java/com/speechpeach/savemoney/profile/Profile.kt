@@ -6,6 +6,7 @@ import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import com.speechpeach.savemoney.database.FirebaseModule
 import com.speechpeach.savemoney.database.User
 
@@ -76,5 +77,15 @@ object Profile {
 
     fun setReferral(successCallback: () -> Unit, failedCallback: () -> Unit) {
         setReferral(referralCode, successCallback, failedCallback)
+    }
+
+    fun onChange(callback: (QuerySnapshot) -> Unit) {
+        val firestore = FirebaseFirestore.getInstance()
+        firestore.collection(User.collection)
+            .whereEqualTo("uid", uid)
+            .addSnapshotListener { value, _ ->
+                if (value != null)
+                    callback(value)
+            }
     }
 }

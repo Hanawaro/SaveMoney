@@ -11,22 +11,22 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         app:centerColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/button_money"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:showPopup="false" />
-
-    <Button
-        android:id="@+id/button_money"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:popupText="HELP"
+        app:showPercentage="true"
+        app:showPopup="true" />
 
-        android:text="MONEY"/>
+    <TextView
+        android:id="@+id/text_view_stats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chart_manager" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

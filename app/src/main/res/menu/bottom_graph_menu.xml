@@ -2,15 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/managerFragment"
-        android:title="manager" />
+        android:id="@+id/purchaseFragment"
+        android:icon="@drawable/ic_food_48"
+        android:title="purch" />
+
 
     <item
         android:id="@+id/statsFragment"
+        android:icon="@drawable/ic_stats_24"
         android:title="stats" />
 
     <item
         android:id="@+id/infoFragment"
+        android:icon="@drawable/ic_food_48"
         android:title="info" />
+
+
 
 </menu>

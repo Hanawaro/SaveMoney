@@ -32,7 +32,7 @@
         android:id="@+id/button_edit_get_referral_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="COPY REFERRAL CODE"
+        android:text="Пригласить"
 
         app:layout_constraintBottom_toTopOf="@+id/button_edit_referral_code"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +46,7 @@
         app:layout_constraintBottom_toTopOf="@+id/button_show_family"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="REFERRAL CODE"/>
+        android:text="Код группы"/>
 
     <Button
         android:id="@+id/button_show_family"
@@ -55,7 +55,7 @@
         app:layout_constraintBottom_toTopOf="@+id/button_show_black_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="FAMILY"/>
+        android:text="Группа"/>
 
     <Button
         android:id="@+id/button_show_black_list"
@@ -64,7 +64,7 @@
         app:layout_constraintBottom_toTopOf="@+id/button_exit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="BLACK LIST"/>
+        android:text="Чёрный список"/>
 
     <Button
         android:id="@+id/button_exit"
@@ -72,6 +72,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="EXIT"/>
+        android:text="Выход"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

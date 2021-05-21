@@ -10,7 +10,6 @@ import com.speechpeach.savemoney.R
 import com.speechpeach.savemoney.database.User
 import com.speechpeach.savemoney.profile.Profile
 import kotlinx.android.synthetic.main.dialog_referral_code.*
-import kotlinx.android.synthetic.main.fragment_info.*
 
 class ReferralCodeDialog : DialogFragment() {
 
@@ -34,7 +33,7 @@ class ReferralCodeDialog : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         dialog_referral_code.setText(referralCode)
-        dialog_accept_refferal_code.setOnClickListener {
+        dialog_accept_referral_code.setOnClickListener {
 
             Profile.setReferral( dialog_referral_code.text.toString(),
             {
@@ -47,6 +46,18 @@ class ReferralCodeDialog : DialogFragment() {
                 if (context != null)
                     Toast.makeText(requireContext(), "failed", Toast.LENGTH_SHORT).show()
             })
+        }
+
+        dialog_clear_referral_code.setOnClickListener {
+            User.get(Profile.uid) {
+                if (!it.isEmpty) {
+                    Profile.user.referralCode = ""
+                    User.update(Profile.user, it.documents[0].reference)
+
+                    Toast.makeText(requireContext(), "All is right", Toast.LENGTH_SHORT).show()
+                    dismiss()
+                }
+            }
         }
     }
 
